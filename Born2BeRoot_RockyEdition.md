@@ -167,9 +167,9 @@ Una volta riavviata la macchina verrà richiesta la password per la crittografia
 
 Verifichiamo quindi che sia tutto in regola.
 
-1. Verifica partizionamento con `lsblk` dovremmo avere un output come questo: <img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522">
+1. Verifica partizionamento con `lsblk` dovremmo avere un output come questo: <img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522" data-align="center">
 
-2. Verifica dell’installazione e del sistema operativo: `head -2 /etx/os-release`<img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387">
+2. Verifica dell’installazione e del sistema operativo: `head -2 /etx/os-release` <img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="center">
 
 3. Verifica corretta attivazione SELinux: `sestatus` ![](asset_Born2BeRoot_RockyEdition/bac539082bbb6428000891c39f740b636b57db96.png)
 
