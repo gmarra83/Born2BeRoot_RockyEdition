@@ -174,6 +174,7 @@ Verifichiamo quindi che sia tutto in regola.
 <img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="center">
 
 5. Verifica corretta attivazione SELinux: `sestatus`
+
 ![](asset_Born2BeRoot_RockyEdition/bac539082bbb6428000891c39f740b636b57db96.png)
 
 Adesso andremo ad impostare il sistema per rispettare i requisiti richiesti.
