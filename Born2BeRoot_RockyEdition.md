@@ -167,15 +167,11 @@ Una volta riavviata la macchina verrà richiesta la password per la crittografia
 
 Verifichiamo quindi che sia tutto in regola.
 
-1. Verifica partizionamento con `lsblk` dovremmo avere un output come questo:
-<img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522" data-align="center">
+1. Verifica partizionamento con `lsblk` dovremmo avere un output come questo: <img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522">
 
-3. Verifica dell’installazione e del sistema operativo: `head -2 /etx/os-release`   
-<img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="center">
+2. Verifica dell’installazione e del sistema operativo: `head -2 /etx/os-release`<img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="left">
 
-5. Verifica corretta attivazione SELinux: `sestatus`
-
-![](asset_Born2BeRoot_RockyEdition/bac539082bbb6428000891c39f740b636b57db96.png)
+3. Verifica corretta attivazione SELinux: `sestatus` <img src="asset_Born2BeRoot_RockyEdition/bac539082bbb6428000891c39f740b636b57db96.png" title="" alt="" data-align="left">
 
 Adesso andremo ad impostare il sistema per rispettare i requisiti richiesti.
 
@@ -191,7 +187,7 @@ In pratica adesso saremo in grado di andare a configurare il traffico su determi
 
 Verificare lo stato delle porte tramite: `sudo semanage port -l | grep ssh` (relativo al servier SSH). 
 
-Si dovrebbe ottenere un output di questo tipo: <img title="" src="asset_Born2BeRoot_RockyEdition/c36c99d7f40354252c7e665de649d08244acbc8f.png" alt="" data-align="inline">
+Si dovrebbe ottenere un output di questo tipo: <img title="" src="asset_Born2BeRoot_RockyEdition/c36c99d7f40354252c7e665de649d08244acbc8f.png" alt="" data-align="left">
 
 Ci indica che è abilitata solo la porta 22 su protocollo tcp. 
 
