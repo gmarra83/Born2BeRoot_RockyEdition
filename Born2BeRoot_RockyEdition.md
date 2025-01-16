@@ -232,6 +232,7 @@ Procediamo quindi a testare la nostra connessione al server SSH sulla macchina v
    
    - `ssh -p 4242 <utente>@localhost` ovviamente *utente* sarà lo user che avete impostato in precedenza. Si otterrà il seguente output. Proseguire digitando “yes” quindi inserire la password quando richiesta. Se la connessione è avvenuta otterremo un messaggio di output del tipo “Last Login: Data Ora” 
      ![](asset_Born2BeRoot_RockyEdition/5f46ca0378f10e12496f1dfa6835dca0878a1624.png)
+     
      A connessione avvenuta digitare `exit` per chiuderla e tornare alla sessione precedente.
 
      <img src="asset_Born2BeRoot_RockyEdition/d4d74fe2b7392b408c98d6d0c18b3976be8a779f.png" title="" alt="" data-align="center">
