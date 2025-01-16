@@ -475,7 +475,7 @@ Prima di chiudere l’argomento e passare avanti faccio un breve riassunto dei c
 | ------------------------------------ | --------------------------------------- | -------------------------------------------------------------------- |
 | Listare i cronjob dell'utente        | `crontab -l`                            | Mostra i cronjob attivi per  l'utente corrente.                      |
 | Modificare i cronjob                 | `crontab -e`                            | Apre l'editor predefinito  per modificare i cronjob dell'utente.     |
-| Aggiungere un cronjob                | ``echo "*/10 * * * * /percorso/script"` | crontab -`                                                           |
+| Aggiungere un cronjob                | `echo "*/10 * * * * /percorso/script"`  | Inserisce il cronjob puntato dal file indicato                       |
 | Rimuovere i cronjob                  | `crontab -r`                            | Cancella tutti i cronjob dell'utente corrente.                       |
 | Verificare lo stato del<br> servizio | `systemctl status crond`                | Mostra se il servizio cron è attivo o no.                            |
 | Avviare il servizio cron             | `systemctl start crond`                 | Avvia il servizio cron.                                              |
