@@ -699,7 +699,7 @@ sudo chown lighttpd:lighttpd /var/www/lighttpd/phpinfo.php
 sudo chmod 655 /var/www/lighttpd/phpinfo.php
 ```
 
-Adesso proviamo ad accedere al file info.php sia da VM che da Host (browser). Nel 1 caso digitiamo da terminale “sudo curl http://127.0.0.1:80/phpinfo.php” dovremmo ricevere una cosa simile al seguente output:
+Adesso proviamo ad accedere al file `phpinfo.php` sia da VM che da Host (browser). Nel 1 caso digitiamo da terminale `sudo curl http://127.0.0.1:80/phpinfo.php` dovremmo ricevere una cosa simile al seguente output:
 
 ![_62.png](asset_Born2BeRoot_RockyEdition/f2932acb962cf70f32bb152f43455c0026270782.png)
 
@@ -707,7 +707,7 @@ Successivamente da browser ci colleghiamo alla pagina web http://127.0.0.1:1234/
 
 ![](asset_Born2BeRoot_RockyEdition/2025-01-16-17-56-42-image.png)
 
-Si può notare come il protocollo FastCGI è funzionante correttamente. Abbiamo quindi testato che PHP è funzionante e comunica correttamente con lighttpd. Adesso andiamo a rimuovere il file phpinfo.php per questioni di sicurezza col comando: `sudo rm /var/www/lighttpd/info.php`
+Si può notare come il protocollo FastCGI è funzionante correttamente. Abbiamo quindi testato che PHP è funzionante e comunica correttamente con lighttpd. Adesso andiamo a rimuovere il file `phpinfo.php` per questioni di sicurezza col comando: `sudo rm /var/www/lighttpd/phpinfo.php`
 
 ---
 
