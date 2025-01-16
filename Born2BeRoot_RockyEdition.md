@@ -191,14 +191,15 @@ Prima di tutto controlliamo che sia tutto aggiornato: `sudo dnf update`. E’ pr
 
 In pratica adesso saremo in grado di andare a configurare il traffico su determinate porte. Da qui, infatti, configureremo il sistema per poter funzionare con il protocollo SSH. 
 
-Verificare lo stato delle porte tramite: `sudo semanage port -l | grep ssh` (relativo al servier SSH). 
+Verificare lo stato delle porte tramite: `sudo semanage port -l | grep ssh` (relativo al server SSH). 
 
-Si dovrebbe ottenere un output di questo tipo: 
+Si dovrebbe ottenere un output di questo tipo:
 <img title="" src="asset_Born2BeRoot_RockyEdition/c36c99d7f40354252c7e665de649d08244acbc8f.png" alt="" data-align="left">
 
 Ci indica che è abilitata solo la porta 22 su protocollo tcp. 
 
-Dobbiamo aggiungere quindi alla regola la porta 4242 tramite il seguente comando: `sudo semanage port -a -t ssh_port_t -p tcp 4242`. Andando ad eseguirlo e ritestando lo stato si dovrebbe ottenere il seguente output![](asset_Born2BeRoot_RockyEdition/73428d7c4627c50037bc1267b2eb42cf487651e5.png)
+Dobbiamo aggiungere quindi alla regola la porta 4242 tramite il seguente comando: `sudo semanage port -a -t ssh_port_t -p tcp 4242`. Andando ad eseguirlo e ritestando lo stato si dovrebbe ottenere il seguente output
+![](asset_Born2BeRoot_RockyEdition/73428d7c4627c50037bc1267b2eb42cf487651e5.png)
 
 Adesso la porta 4242 per ssh su protocollo tcp è consentita. Riavviare il sistema con `sudo reboot` (giusto per essere sicuri).
 
