@@ -168,13 +168,16 @@ Una volta riavviata la macchina verrà richiesta la password per la crittografia
 Verifichiamo quindi che sia tutto in regola.
 
 1. Verifica partizionamento con `lsblk` dovremmo avere un output come questo: 
-<img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522">
+   
+   <img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522">
 
-2. Verifica dell’installazione e del sistema operativo: `head -2 /etx/os-release`
-<img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="center">
+2. Verifica dell’installazione e del sistema operativo: `head -n 2 /etx/os-release`
+   
+   <img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="center">
 
 3. Verifica corretta attivazione SELinux: `sestatus` 
-<img title="" src="asset_Born2BeRoot_RockyEdition/bac539082bbb6428000891c39f740b636b57db96.png" alt="" data-align="center">
+   
+   <img title="" src="asset_Born2BeRoot_RockyEdition/bac539082bbb6428000891c39f740b636b57db96.png" alt="" data-align="center">
 
 Adesso andremo ad impostare il sistema per rispettare i requisiti richiesti.
 
@@ -190,7 +193,8 @@ In pratica adesso saremo in grado di andare a configurare il traffico su determi
 
 Verificare lo stato delle porte tramite: `sudo semanage port -l | grep ssh` (relativo al servier SSH). 
 
-Si dovrebbe ottenere un output di questo tipo: <img title="" src="asset_Born2BeRoot_RockyEdition/c36c99d7f40354252c7e665de649d08244acbc8f.png" alt="" data-align="left">
+Si dovrebbe ottenere un output di questo tipo: 
+<img title="" src="asset_Born2BeRoot_RockyEdition/c36c99d7f40354252c7e665de649d08244acbc8f.png" alt="" data-align="left">
 
 Ci indica che è abilitata solo la porta 22 su protocollo tcp. 
 
@@ -202,11 +206,12 @@ Adesso la porta 4242 per ssh su protocollo tcp è consentita. Riavviare il siste
 
 Verifica e messa a punto del servizio SSH --> per prima cosa verifichiamo che il servizio sia installato ed attivo: `sudo systemctl status sshd` ![](asset_Born2BeRoot_RockyEdition/cefc47896f65c8cc5c270eb4672556db8dd7832f.png)
 
-Adesso dobbiamo modificare il file di configurazione SSH. Tale file si trova in `/etc/ssh/sshd_config`. Apriamolo con VIM utilizzando il comando: `sudo vi  /etc/ssh/sshd_config`. Aperto il file dobbiamo cercare il campo “Port” e cambiarlo  inserendo 4242. Se “Port” è preceduto da ‘#’ eliminiamolo perché è un commento. Già che ci siamo dobbiamo anche verificare il fatto che non sia consentito il login root via SSH. Questo si fa impostando il seguente campo: “PermitRootLogin no”. Se non presente aggiungerlo. <img src="asset_Born2BeRoot_RockyEdition/fef164877854a1c730150983e7b2984f9980b8b7.png" title="" alt="" width="454">
+Adesso dobbiamo modificare il file di configurazione SSH. Tale file si trova in `/etc/ssh/sshd_config`. Apriamolo con VIM utilizzando il comando: `sudo vi  /etc/ssh/sshd_config`. Aperto il file dobbiamo cercare il campo “Port” e cambiarlo  inserendo 4242. Se “Port” è preceduto da ‘#’ eliminiamolo perché è un commento. Già che ci siamo dobbiamo anche verificare il fatto che non sia consentito il login root via SSH. Questo si fa impostando il seguente campo: “PermitRootLogin no”. Se non presente aggiungerlo. <img title="" src="asset_Born2BeRoot_RockyEdition/fef164877854a1c730150983e7b2984f9980b8b7.png" alt="" width="454" data-align="left">
 
 Fatto questo riavviamo il servizio con il comando: `sudo systemctl restart sshd` e ricontrolliamo che il tutto sia correttamente: `sudo systemctl status sshd`.
 
-Si dovrebbe ottenere questo output ![](asset_Born2BeRoot_RockyEdition/ee65d5ba5c769dc874ba3680321f11111654df73.png)
+Si dovrebbe ottenere questo output 
+![](asset_Born2BeRoot_RockyEdition/ee65d5ba5c769dc874ba3680321f11111654df73.png)
 
 NB: Attenzione che ci sono 2 file di configurazioni, ovvero “ssh_config” e “sshd_config”. Quello sshd è relativo al server ed è quello che va modificato!
 
@@ -214,13 +219,20 @@ Procediamo quindi a testare la nostra connessione al server SSH sulla macchina v
 
 1) Andiamo a testare la connessione direttamente all’interno della VM. Proseguiamo quindi andando ad inserire i seguenti comandi
    
-   - `ip addr show` andiamo a vedere qual è l’indirizzo IP della VM![](asset_Born2BeRoot_RockyEdition/56d5ef3aa0f9afa44e5fed1b04ad5dbdcaa18c51.png) troviamo 2 schede di rete. Una è la scheda di rete di loopback (interfaccia di rete interna). In generale l'indirizzo di loopback è sempre 127.0.0.1. Tale indirizzo è altresì denominato "localhost". L'altro indirizzo è quello della scheda di rete "reale". Tale indirizzo è 10.0.2.15. 
+   - `ip addr show` andiamo a vedere qual è l’indirizzo IP della VM![](asset_Born2BeRoot_RockyEdition/56d5ef3aa0f9afa44e5fed1b04ad5dbdcaa18c51.png) 
+     troviamo 2 schede di rete. Una è la scheda di rete di loopback (interfaccia di rete interna). In generale l'indirizzo di loopback è sempre 127.0.0.1. Tale indirizzo è altresì denominato "localhost". L'altro indirizzo è quello della scheda di rete "reale". Tale indirizzo è 10.0.2.15. 
    
-   - `ssh -p 4242 <utente>@localhost` ovviamente <utente> sarà lo user che avete impostato in precedenza. Si otterrà il seguente output. Proseguire digitando “yes” quindi inserire la password quando richiesta. Se la connessione è avvenuta otterremo un messaggio di output del tipo “Last Login: Data Ora” ![](asset_Born2BeRoot_RockyEdition/5f46ca0378f10e12496f1dfa6835dca0878a1624.png) A connessione avvenuta digitare `exit` per chiuderla e tornare alla sessione precedente. <img src="asset_Born2BeRoot_RockyEdition/d4d74fe2b7392b408c98d6d0c18b3976be8a779f.png" title="" alt="" data-align="center">
+   - `ssh -p 4242 <utente>@localhost` ovviamente *utente* sarà lo user che avete impostato in precedenza. Si otterrà il seguente output. Proseguire digitando “yes” quindi inserire la password quando richiesta. Se la connessione è avvenuta otterremo un messaggio di output del tipo “Last Login: Data Ora” 
+     ![](asset_Born2BeRoot_RockyEdition/5f46ca0378f10e12496f1dfa6835dca0878a1624.png) 
+     A connessione avvenuta digitare `exit` per chiuderla e tornare alla sessione precedente. <img src="asset_Born2BeRoot_RockyEdition/d4d74fe2b7392b408c98d6d0c18b3976be8a779f.png" title="" alt="" data-align="center">
    
-   - Eventualmente ripetere il punto di cui sopra utilizzando l'indirizzo IP della VM (10.0.2.15 nel nostro caso). Si dovrebbe ottenere lo stesso risultato <img title="" src="asset_Born2BeRoot_RockyEdition/a799bc8a877b2eac1f586dd87e63836e5ef9442d.png" alt="" data-align="center">
+   - Eventualmente ripetere il punto di cui sopra utilizzando l'indirizzo IP della VM (10.0.2.15 nel nostro caso). Si dovrebbe ottenere lo stesso risultato 
+     
+     <img title="" src="asset_Born2BeRoot_RockyEdition/a799bc8a877b2eac1f586dd87e63836e5ef9442d.png" alt="" data-align="center">
 
-2) Test dal nostro pc (HOST) su cui gira Virtual Box. In caso si utilizzasse Windows è molto comodo utilizzare il sw [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Dato che la VM, per impostazione di default, utilizza il NAT (Network Address Translation) dobbiamo poter accedere alla nostra VM dall’esterno. In pratica il NAT gestisce una rete separata rispetto alla nostra (quella del PC dove stiamo lavorando). Dobbiamo quindi comunicare al NAT come indirizzare il traffico di rete. Nello specifico questo si fa dalle impostazioni di rete avanzate della VM. ![](asset_Born2BeRoot_RockyEdition/a8d82b75cbb7d1551335fe3af2fe909f74a670a4.png) Procedere quindi impostando i campi come segue. ![](asset_Born2BeRoot_RockyEdition/75f4d2583bce5ee598eed4bc89195822e750a4ce.png)
+2) Test dal nostro pc (HOST) su cui gira Virtual Box. In caso si utilizzasse Windows è molto comodo utilizzare il sw [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Dato che la VM, per impostazione di default, utilizza il NAT (Network Address Translation) dobbiamo poter accedere alla nostra VM dall’esterno. In pratica il NAT gestisce una rete separata rispetto alla nostra (quella del PC dove stiamo lavorando). Dobbiamo quindi comunicare al NAT come indirizzare il traffico di rete. Nello specifico questo si fa dalle impostazioni di rete avanzate della VM. ![](asset_Born2BeRoot_RockyEdition/a8d82b75cbb7d1551335fe3af2fe909f74a670a4.png) 
+   Procedere quindi impostando i campi come segue. 
+   ![](asset_Born2BeRoot_RockyEdition/75f4d2583bce5ee598eed4bc89195822e750a4ce.png)
 
 Prima di tutto dobbiamo precisare che l’Host è il nostro PC mentre il Guest è la VM. La porta guest è la 4242 come impostato precedentemente. La porta Host per semplicità la mettiamo uguale ma potremmo utilizzarne anche un’altra libera a nostro piacimento. La cosa importante è che dal nostro PC poi ci colleghiamo sulla porta “Host” per collegarci alla VM. Il NAT si preoccupa di inoltrare il traffico dal nostro PC alla porta selezionata. Per il collegamento è necessario utilizzare l’IP local Host (127.0.0.1). Di seguito uno schema di connessione di rete
 
@@ -236,8 +248,8 @@ NB: il discorso dell’impostazione del NAT ci servirà anche successivamente qu
 
 Adesso apriamo Putty ed inseriamo i parametri corretti per collegarci alla VM via SSH.<img src="asset_Born2BeRoot_RockyEdition/e0d292c5ff0b4064fa247e98e2daa8bd3b67aedb.png" title="" alt="" data-align="center">
 
-Cliccare su “Open” e ci verrà richiesto nome utente e password per collegarci alla VM. <img title="" src="asset_Born2BeRoot_RockyEdition/f0aa9cad086caa5c76980d4a20ebf281210f2dd4.png" alt="" width="336" data-align="center">
-
+Cliccare su “Open” e ci verrà richiesto nome utente e password per collegarci alla VM. 
+<img title="" src="asset_Born2BeRoot_RockyEdition/f0aa9cad086caa5c76980d4a20ebf281210f2dd4.png" alt="" width="336" data-align="center">
 ![_38.png](asset_Born2BeRoot_RockyEdition/128ff7e3af2f73a047414a29caafe902384e6b60.png)
 
 Come si vede la connessione è avvenuta con successo. Adesso ci si può concentrare sul resto del progetto.
@@ -299,8 +311,6 @@ Il file di configurazione lo troviamo in *`/etc/sudoers`*. In questo caso invece
 | 3   | ogni azione usando sudo deve essere loggata (sia input che output) e salvata in `/var/log/sudo/` NB: assicurarsi che la dir esista ed abbia i permessi corretti (`chmod 700`) | `Defaults iolog_dir="/var/log/sudo" Defaults logfile="/var/log/sudo/sudo.log" Defaults  log_input,log_output` |
 | 4   | la modalità TTY deve essere abilitata per motivi di sicurezza                                                                                                                 | `Defaults requiretty`                                                                                         |
 | 5   | per sicurezza i path usati da sudo devono essere ristretti a: `/usr/local/sbin:/usr/local/bin:/usr/sbin: /usr/bin:/sbin:/bin:/snap/bin`                                       | `Defaults secure_path="PATH"`                                                                                 |
-
-
 
 Spiegazione di cosa fanno i comandi:
 
