@@ -80,13 +80,13 @@ Utilizzando il mouse si potrà accedere alle varie sezioni da configurare. Sorvo
 
 - Già che ci siamo impostiamo anche un utente come richiesto. Questa operazione potrebbe essere fatta anche successivamente via linea di comando ma tanto vale approfittarne. Per impostare l’utente entrare in “Creazione Utente” e compilare i campi come segue: 
 
-- Nome Completo: non necessario.
+   - Nome Completo: non necessario.
 
-- Nome utente: impostare il nome utente che hai in 42.
+   - Nome utente: impostare il nome utente che hai in 42.
 
-- Flaggare le opzioni “Imposta questo utente come amministratore” e “Richiedi una password per usare questo account”
+   - Flaggare le opzioni “Imposta questo utente come amministratore” e “Richiedi una password per usare questo account”
 
-<img title="" src="asset_Born2BeRoot_RockyEdition/e3ab8a606d8d0f153f451fd3a3e90ac79249b269.png" alt="" data-align="inline">
+   <img title="" src="asset_Born2BeRoot_RockyEdition/e3ab8a606d8d0f153f451fd3a3e90ac79249b269.png" alt="" data-align="inline">
 
 Già che ci siamo entriamo anche nella configurazione avanzata per associare già da adesso a questo utente l’appartenenza al gruppo sudo (NB: in Rocky, CentOS e nelle distro RHEL il gruppo sudo si chiama wheel!!!) ed al gruppo user42 (come da subject).
 
