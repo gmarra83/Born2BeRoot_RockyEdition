@@ -324,7 +324,7 @@ Il file di configurazione lo troviamo in *`/etc/sudoers`*. In questo caso invece
 | 2   | un messaggio personalizzato, di tua scelta, deve essere mostrato se è immessa una password errata                                                                             | `Defaults badpass_message="Msg"`                                                                              |
 | 3   | ogni azione usando sudo deve essere loggata (sia input che output) e salvata in `/var/log/sudo/` NB: assicurarsi che la dir esista ed abbia i permessi corretti (`chmod 700`) | `Defaults iolog_dir="/var/log/sudo"`<br> `Defaults logfile="/var/log/sudo/sudo.log"`<br> `Defaults  log_input,log_output` |
 | 4   | la modalità TTY deve essere abilitata per motivi di sicurezza                                                                                                                 | `Defaults requiretty`                                                                                         |
-| 5   | per sicurezza i path usati da sudo devono essere ristretti a: `/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /snap/bin`                                       | `Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`                                                                                 |
+| 5   | per sicurezza i path usati da sudo devono essere ristretti a: `/usr/local/sbin` `/usr/local/bin` `/usr/sbin` `/usr/bin` `/sbin` `/bin` `/snap/bin`                                       | `Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`                                                                                 |
 
 Spiegazione di cosa fanno i comandi:
 
