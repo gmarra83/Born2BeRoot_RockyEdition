@@ -831,7 +831,7 @@ sudo chown -R lighttpd:lighttpd /var/lib/php/session
 sudo chmod 700 /var/lib/php/session
 ```
 
-Salvato il file e riavviato il servizio lighttpd (sudo systemctl restart lighttpd) andando a visitare tramite il browser la pagina http://127.0.0.1:1234/phpmyadmin ci troveremo davanti il login al nostro db MariadB.
+Salvato il file e riavviato il servizio lighttpd (`sudo systemctl restart lighttpd`) andando a visitare tramite il browser la pagina http://127.0.0.1:1234/phpmyadmin ci troveremo davanti il login al nostro db MariadB.
 
 <img title="" src="asset_Born2BeRoot_RockyEdition/2025-01-16-18-52-28-image.png" alt="" data-align="center" width="219">
 
