@@ -94,7 +94,7 @@ Già che ci siamo entriamo anche nella configurazione avanzata per associare gi�
 
 Salvare le modifiche, premere su “Fatto” e passare alla fase successiva.
 
-### SISTEMA:questa sezione è quella più “complessa”, soprattutto la parte che riguarda il partizionamento che tratteremo per ultimo.
+### SISTEMA: questa sezione è quella più “complessa”, soprattutto la parte che riguarda il partizionamento che tratteremo per ultima.
 
 **KDUMP**: come specificato nel subject non è necessario per Rocky quindi lo andiamo a disabilitare togliendo la spunta
 
