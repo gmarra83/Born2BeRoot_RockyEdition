@@ -19,7 +19,7 @@ Perché Rocky? Perché, dovendo realizzare una VM che, di fatto, fungerà da web
 ### Gestione dei Pacchetti:
 
 Nei sistemi Unix/Linux i software possono essere installati fondamentalmente in 2 modalità. La prima è attraverso la compilazione dei sorgenti, mentre la seconda è utilizzare il sistema cosiddetto “a pacchetti”. Un pacchetto, in pratica, è un archivio dove sono presenti tutti i files necessari per l’instalazione di un dato programma ed
-anche le dipendenze. In tal senso Rocku utilizza come packet manager [DNF](https://docs.rockylinux.org/guides/package_management/dnf_package_manager/).
+anche le dipendenze. In tal senso Rocky utilizza come packet manager [DNF](https://docs.rockylinux.org/guides/package_management/dnf_package_manager/).
 
 Essendo derivata da RH, è compatibile con i pacchetti in formato .rpm. Da
 notare che RPM è anche un comando, RPM (Red Hat Packet Manager). In realtà
