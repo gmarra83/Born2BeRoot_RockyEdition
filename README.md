@@ -28,7 +28,7 @@ tocca farlo manualmente. Per questo motivo ci sono i packet manager come DNF.
 
 ### [Download ISO](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.5-x86_64-minimal.iso)
 
-Dovendo realizzare un webserver si è decisi di scaricare, ed installare, la versione minimal di Rocky che trovate [QUI](https:/download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-minimal.iso). Tale versione è caratterizzata dal fatto che è un ambiente Linux minimale e contiene solo i pacchetti essenziali, cosa molto utile in configurazioni server. Inoltre la “minimal ISO” non necessità di collegamento a internet in quanto ha tutti i pacchetti necessari all’interno dell’immagine disco.
+Dovendo realizzare un webserver si è decisi di scaricare, ed installare, la versione minimal di Rocky. Tale versione è caratterizzata dal fatto che è un ambiente Linux minimale e contiene solo i pacchetti essenziali, cosa molto utile in configurazioni server. Inoltre la “minimal ISO” non necessità di collegamento a internet in quanto ha tutti i pacchetti necessari all’interno dell’immagine disco.
 
 ---
 
