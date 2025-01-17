@@ -660,7 +660,8 @@ Adesso procediamo a stabilire la connessione al server lighttpd. Su Rocky (e in 
    
    Possiamo testare se il nostro file d configurazione è corretto andando ad eseguire: `sudo -t -f lighttpd /etc/lighttpd/lighttpd.conf`. Se tutto ok si otterrà un messaggio `Sintax OK`
 
-3. il file di configurazione del protocollo fastcgi che si trova in `/etc/lighttpd/conf.d/fastcgi.conf`. Prima di modificarlo però è necessario capire il modulo php-fpm su che porta sta ascoltando. Per fare questo lanciamo il comando `ss -lx | grep "php"`. Se otteniamo un output simile a questo allora stiamo comunicando sul socket Unix.![](asset_Born2BeRoot_RockyEdition/2025-01-16-14-58-51-image.png)Detto questo quindi andiamo ad aggiungere le seguenti linee di codice al file `/etc/lighttpd/conf.d/fastcgi.conf`:
+3. il file di configurazione del protocollo fastcgi che si trova in `/etc/lighttpd/conf.d/fastcgi.conf`. Prima di modificarlo però è necessario capire il modulo php-fpm su che porta sta ascoltando. Per fare questo lanciamo il comando `ss -lx | grep "php"`. Se otteniamo un output simile a questo allora stiamo comunicando sul socket Unix.![](asset_Born2BeRoot_RockyEdition/2025-01-16-14-58-51-image.png)
+   Detto questo quindi andiamo ad aggiungere le seguenti linee di codice al file `/etc/lighttpd/conf.d/fastcgi.conf`:
    
    ```ini
    fastcgi.server += ( ".php" =>
@@ -673,9 +674,9 @@ Adesso procediamo a stabilire la connessione al server lighttpd. Su Rocky (e in 
    )
    ```
 
-4. Apriamo il file *modules.conf* (`sudo vi /etc/lighttpd/modules.conf`) e decommentiamo la riga `include conf_dir + "/conf.d/fastcgi.conf"`
+5. Apriamo il file *modules.conf* (`sudo vi /etc/lighttpd/modules.conf`) e decommentiamo la riga `include conf_dir + "/conf.d/fastcgi.conf"`
 
-5. Apriamo il file *php.ini* (`sudo vi /etc/php.ini`) e decommentiamo la riga: `cgi.fix_pathinfo = 1`
+6. Apriamo il file *php.ini* (`sudo vi /etc/php.ini`) e decommentiamo la riga: `cgi.fix_pathinfo = 1`
 
 Bene adesso possiamo riavviare sia il server lighttpd che php-fpm con i comandi:
 
