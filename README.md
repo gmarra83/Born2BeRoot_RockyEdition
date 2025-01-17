@@ -124,16 +124,16 @@ A questo punto cliccare su “Fatto”. Si aprirà quindi il menù di configuraz
    selezionati. Ci si troverà quindi in una situazione dove si avranno 30.8GiB di
    spazio disponibile / 30.8GiB di spazio totale
 
-1) Creare una prima partizione con punto di mount = /boot. Tale partizione sarà di tipo primario e di dimensione 512MiB (è la dimensione consigliata da Rocky)
+1) Creare una prima partizione con punto di mount = "*/boot*". Tale partizione sarà di tipo primario e di dimensione 512MiB (è la dimensione consigliata da Rocky)
 
-2) Creare una seconda partizione con punto mount = biosboot. Tale partizione farla da 1KiB à in automatico in realtà rocky imposta 1MiB (1024KiB) che è il minimo per questo tipo di distro
+2) Creare una seconda partizione con punto mount = "*biosboot*". Tale partizione farla da 1KiB à in automatico in realtà rocky imposta 1MiB (1024KiB) che è il minimo per questo tipo di distro
 
 3) Iniziare a creare le partizioni logiche con LVM. Bisogna impostare come tipo di dispositivo “LVM” per ogni partizione che si andrà a creare e associarla al
    gruppo di volumi corrispondente. Il gruppo di volumi sarà quello standard
    creato. Il nome è a piacere. Io l’ho nominato con “vg0” (volume group 0).
    Andando a cliccare su “modifica” è necessario mettere la spunta su “cripta”.
    Realizzare quindi un volume tanti quanti ne sono richiesti. NB: per il volume
-   di SWAP è necessario impostare il mount point = swap.
+   di SWAP è necessario impostare il mount point = "*swap*".
 
 <img title="" src="asset_Born2BeRoot_RockyEdition/ffe2b18c7076808ed5d0a15e5def9f087efa740d.png" alt="" width="315" data-align="inline">
 
