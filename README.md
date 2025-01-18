@@ -372,7 +372,7 @@ Elenco di risorse da monitorare:
 | 12  | Stato LVM                                 | `(if [ "$(vgs --noheadings \| wc -l)" -gt 0 ]; then echo "yes"; else echo "no"; fi)` |
 | 13  | Numero di connessioni attive              | `ss -ta \| grep "ESTAB" \| wc -l`                                                    |
 | 14  | Numero di utenti loggati                  | `users \| wc -w`                                                                     |
-| 15  | Indirizzo IP v4                           | `hostname -I`                                                                        |
+| 15  | Indirizzo IP v4                           | `hostname -I | awk '{print $1}'`                                                     |
 | 16  | MAC Address                               | `ip link \| grep "link/ether" \| awk '{print $2}'`                                   |
 | 17  | numero di comandi eseguiti<br> con sudo   | `journalctl _COMM=sudo \| grep "COMMAND" \| wc -l`                                   |
 
@@ -404,7 +404,7 @@ LAST_REBOOT=$(who -b | awk '{print $3, $4}')
 LVM_ACTIVE=$(if [ "$(vgs --noheadings | wc -l)" -gt 0 ]; then echo "yes"; else echo "no"; fi)
 NET_CONN=$(ss -ta | grep "ESTAB" | wc -l)
 USER_NUM=$(users | wc -w)
-IP4_ADDR=$(hostname -I)
+IP4_ADDR=$(hostname -I | awk '{print $1}')
 MAC_ADDR=$(ip link | grep "link/ether" | awk '{print $2}')
 SUDO_CNT=$(journalctl _COMM=sudo | grep "COMMAND" | wc -l)
 
