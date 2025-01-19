@@ -372,7 +372,7 @@ Elenco di risorse da monitorare:
 | 12  | Stato LVM                                 | `(if [ "$(vgs --noheadings \| wc -l)" -gt 0 ]; then echo "yes"; else echo "no"; fi)` |
 | 13  | Numero di connessioni attive              | `ss -ta \| grep "ESTAB" \| wc -l`                                                    |
 | 14  | Numero di utenti loggati                  | `users \| wc -w`                                                                     |
-| 15  | Indirizzo IP v4                           | `hostname -I | awk '{print $1}'`                                                     |
+| 15  | Indirizzo IP v4                           | `hostname -I \| awk '{print $1}'`                                                    |
 | 16  | MAC Address                               | `ip link \| grep "link/ether" \| awk '{print $2}'`                                   |
 | 17  | numero di comandi eseguiti<br> con sudo   | `journalctl _COMM=sudo \| grep "COMMAND" \| wc -l`                                   |
 
