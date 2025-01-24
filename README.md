@@ -171,7 +171,7 @@ Verifichiamo quindi che sia tutto in regola.
    
    <img src="asset_Born2BeRoot_RockyEdition/8d2aec39c664b73511e46850d2bd4197eedc27c2.png" title="" alt="" width="522">
 
-2. Verifica dell’installazione e del sistema operativo: `head -n 2 /etx/os-release`
+2. Verifica dell’installazione e del sistema operativo: `head -n 2 /etc/os-release`
    
    <img title="" src="asset_Born2BeRoot_RockyEdition/bab48212ef8264826bc0a6c4c52a70621693f429.png" alt="" width="387" data-align="center">
 
