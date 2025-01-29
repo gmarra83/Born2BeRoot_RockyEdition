@@ -658,7 +658,7 @@ Adesso procediamo a stabilire la connessione al server lighttpd. Su Rocky (e in 
    server.modules += ("mod_fastcgi", "mod_rewrite")
    ```
    
-   Possiamo testare se il nostro file d configurazione è corretto andando ad eseguire: `sudo -t -f lighttpd /etc/lighttpd/lighttpd.conf`. Se tutto ok si otterrà un messaggio `Sintax OK`
+   Possiamo testare se il nostro file d configurazione è corretto andando ad eseguire: `sudo lighttpd -t -f /etc/lighttpd/lighttpd.conf`. Se tutto ok si otterrà un messaggio `Sintax OK`
 
 3. il file di configurazione del protocollo fastcgi che si trova in `/etc/lighttpd/conf.d/fastcgi.conf`. Prima di modificarlo però è necessario capire il modulo php-fpm su che porta sta ascoltando. Per fare questo lanciamo il comando `ss -lx | grep "php"`. Se otteniamo un output simile a questo allora stiamo comunicando sul socket Unix.![](asset_Born2BeRoot_RockyEdition/2025-01-16-14-58-51-image.png)
 
@@ -783,7 +783,7 @@ sudo systemctl enable fail2ban    #esecuzione all’avvio
 
 Passiamo quindi alla configurazione del servizio…
 
-- creiamo copia del file di configurazione (NON ELIMINARE IL FILE DI DEFAULT!). Comando: `sudo cp /etc/fail2ban/jail.comf /etc/fail2ban/jail.local`
+- creiamo copia del file di configurazione (NON ELIMINARE IL FILE DI DEFAULT!). Comando: `sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local`
 
 - apriamo con VIM il file `/etc/fail2ban/jail.local` ed andiamo a modificare, a nostro piacimento, i seguenti parametri:
   
@@ -812,7 +812,7 @@ Per avere funzionalità di crittografia ed abilitare il protocollo https dovremm
 è un'interfaccia web per gestire i database MySQL/MariaDB. Permetterà di gestire facilmente il tuo database tramite un browser, senza dover utilizzare la riga di comando.
 
 ```bash
-sudo snf install phpmyadmin        #download ed installazione phpmyadmin
+sudo dnf install phpmyadmin        #download ed installazione phpmyadmin
 sudo ln -s /usr/share/phpMyAdmin /var/www/lighttpd/phpmyadmin    #collegamento a lighttpd attraverso link simbolico
 ```
 
