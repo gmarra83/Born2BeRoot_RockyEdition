@@ -849,4 +849,4 @@ Salvato il file e riavviato il servizio lighttpd (`sudo systemctl restart lightt
 
 <img src="asset_Born2BeRoot_RockyEdition/2025-01-16-18-59-27-image.png" title="" alt="" data-align="center">
 
-# Se ti è piaciuto il tutorial e ti è stato utile mettimi una :star2:
+# Ti è piaciuto il tutorial e ti è stato utile? :star2: : :broken_heart:
