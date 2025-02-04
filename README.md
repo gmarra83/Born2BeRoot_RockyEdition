@@ -4,6 +4,8 @@
 
 La guida spiega passo dopo passo come installare una macchina virtuale RockyLinux e configurarla come webserver su cui si andrà ad installare WordPress.
 
+Se hai gia' fatto tutti i passi vai alla [Defense](DefenseBorn2BeRoot_RoxkyEd.md)
+
 ## Prerequisiti:
 
 - Ambiente virtualizzazione: VirtualBox [Download](https://www.virtualbox.org/wiki/Downloads)
@@ -79,14 +81,14 @@ Utilizzando il mouse si potrà accedere alle varie sezioni da configurare. Sorvo
 - Necessario impostare una password di root. Mi raccomando di tener disabilitata l’opzione di accesso come root via SSH (richiesto dal subject)
 
 - Già che ci siamo impostiamo anche un utente come richiesto. Questa operazione potrebbe essere fatta anche successivamente via linea di comando ma tanto vale approfittarne. Per impostare l’utente entrare in “Creazione Utente” e compilare i campi come segue: 
-
-   - Nome Completo: non necessario.
-
-   - Nome utente: impostare il nome utente che hai in 42.
-
-   - Flaggare le opzioni “Imposta questo utente come amministratore” e “Richiedi una password per usare questo account”
-
-   <img title="" src="asset_Born2BeRoot_RockyEdition/e3ab8a606d8d0f153f451fd3a3e90ac79249b269.png" alt="" data-align="inline">
+  
+  - Nome Completo: non necessario.
+  
+  - Nome utente: impostare il nome utente che hai in 42.
+  
+  - Flaggare le opzioni “Imposta questo utente come amministratore” e “Richiedi una password per usare questo account”
+    
+    <img title="" src="asset_Born2BeRoot_RockyEdition/e3ab8a606d8d0f153f451fd3a3e90ac79249b269.png" alt="" data-align="inline">
 
 Già che ci siamo entriamo anche nella configurazione avanzata per associare già da adesso a questo utente l’appartenenza al gruppo sudo (NB: in Rocky, CentOS e nelle distro RHEL il gruppo sudo si chiama wheel!!!) ed al gruppo user42 (come da subject).
 
@@ -234,7 +236,7 @@ Procediamo quindi a testare la nostra connessione al server SSH sulla macchina v
      ![](asset_Born2BeRoot_RockyEdition/5f46ca0378f10e12496f1dfa6835dca0878a1624.png)
      
      A connessione avvenuta digitare `exit` per chiuderla e tornare alla sessione precedente.
-
+     
      <img src="asset_Born2BeRoot_RockyEdition/d4d74fe2b7392b408c98d6d0c18b3976be8a779f.png" title="" alt="" data-align="center">
    
    - Eventualmente ripetere il punto di cui sopra utilizzando l'indirizzo IP della VM (10.0.2.15 nel nostro caso). Si dovrebbe ottenere lo stesso risultato 
@@ -242,7 +244,7 @@ Procediamo quindi a testare la nostra connessione al server SSH sulla macchina v
      <img title="" src="asset_Born2BeRoot_RockyEdition/a799bc8a877b2eac1f586dd87e63836e5ef9442d.png" alt="" data-align="center">
 
 2) Test dal nostro pc (HOST) su cui gira Virtual Box. In caso si utilizzasse Windows è molto comodo utilizzare il sw [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Dato che la VM, per impostazione di default, utilizza il NAT (Network Address Translation) dobbiamo poter accedere alla nostra VM dall’esterno. In pratica il NAT gestisce una rete separata rispetto alla nostra (quella del PC dove stiamo lavorando). Dobbiamo quindi comunicare al NAT come indirizzare il traffico di rete. Nello specifico questo si fa dalle impostazioni di rete avanzate della VM. ![](asset_Born2BeRoot_RockyEdition/a8d82b75cbb7d1551335fe3af2fe909f74a670a4.png)
-
+   
    Procedere quindi impostando i campi come segue.
    
    ![](asset_Born2BeRoot_RockyEdition/75f4d2583bce5ee598eed4bc89195822e750a4ce.png)
@@ -293,13 +295,13 @@ Andiamo quindi ad impostare i criteri su `/etc/login.defs` come segue (apriamo c
 
 Per i requisiti successivi dobbiamo modificare il file `/etc/pam.d/system-auth`. E’ necessario comprendere che le varie funzionalità sono garantite da diversi moduli sw, quindi a seconda di quello che vogliamo fare andiamo a modificare la linea relativa al modulo corrispondente. Nello specifico possiamo far riferimento alla tabella seguente:
 
-| Campo                                                         | Valore           | Modulo           | Parametro                                              |
-| ------------------------------------------------------------- | ---------------- | ---------------- | ------------------------------------------------------ |
-| Lunghezza minima                                              | 10 caratteri     | pam_pwquality.so | minlen (=10)                                           |
-| contiene uno di ciascun gruppo di caratteri                   | (A-Z)(a-z) (0-9) | pam_pwquality.so | minclass (=3) ucredit (=-1) lcredit (=-1) dcredit (=-1)|
-| NO + 3 caratteri == consecutivi                               |                  | pam_pwquality.so | maxrepeat (=3)                                         |
-| NON può contenere il nome<br> utente                          |                  | pam_pwquality.so | usercheck                                              |
-| Min 7 caratteri non presenti nella pwd precedente (NO x root) |                  | pam_pwquality.so | difok (= 7)                                            |
+| Campo                                                         | Valore           | Modulo           | Parametro                                               |
+| ------------------------------------------------------------- | ---------------- | ---------------- | ------------------------------------------------------- |
+| Lunghezza minima                                              | 10 caratteri     | pam_pwquality.so | minlen (=10)                                            |
+| contiene uno di ciascun gruppo di caratteri                   | (A-Z)(a-z) (0-9) | pam_pwquality.so | minclass (=3) ucredit (=-1) lcredit (=-1) dcredit (=-1) |
+| NO + 3 caratteri == consecutivi                               |                  | pam_pwquality.so | maxrepeat (=3)                                          |
+| NON può contenere il nome<br> utente                          |                  | pam_pwquality.so | usercheck                                               |
+| Min 7 caratteri non presenti nella pwd precedente (NO x root) |                  | pam_pwquality.so | difok (= 7)                                             |
 
 *`minclass`* mi dice quante categorie almeno deve contenere la password. Non mi indica però quali, per questo motivo debbo combinarlo con il sistema di credit (ucredit --> maiuscole, lcredit --> minuscole e dcredit --> numeri) per ottenere il comportamento desiderato. 
 
@@ -318,13 +320,13 @@ OK adesso la policy della password è sistemata. Alla fine proveremo a testarla 
 Come da requisiti procediamo a definire le policy che regolano l’utilizzo del comando `sudo` (esecuzione di comandi in modalità amministratore).
 Il file di configurazione lo troviamo in *`/etc/sudoers`*. In questo caso invece di utilizzare il nostro editor di testo per modificare tale file vado ad usare il comando `sudo visudo` che in pratica mi fa modificare la configurazione andando a testarne anche la sintassi. E’ quindi più sicuro.
 
-| #   | Descrizione                                                                                                                                                                   | Comando                                                                                                       |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 1   | L'autenticazione con sudo deve essere limitata a 3 tentativi in caso di una password errata                                                                                   | `Defaults passwd_tries=3`                                                                                     |
-| 2   | un messaggio personalizzato, di tua scelta, deve essere mostrato se è immessa una password errata                                                                             | `Defaults badpass_message="Msg"`                                                                              |
+| #   | Descrizione                                                                                                                                                                   | Comando                                                                                                                   |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| 1   | L'autenticazione con sudo deve essere limitata a 3 tentativi in caso di una password errata                                                                                   | `Defaults passwd_tries=3`                                                                                                 |
+| 2   | un messaggio personalizzato, di tua scelta, deve essere mostrato se è immessa una password errata                                                                             | `Defaults badpass_message="Msg"`                                                                                          |
 | 3   | ogni azione usando sudo deve essere loggata (sia input che output) e salvata in `/var/log/sudo/` NB: assicurarsi che la dir esista ed abbia i permessi corretti (`chmod 700`) | `Defaults iolog_dir="/var/log/sudo"`<br> `Defaults logfile="/var/log/sudo/sudo.log"`<br> `Defaults  log_input,log_output` |
-| 4   | la modalità TTY deve essere abilitata per motivi di sicurezza                                                                                                                 | `Defaults requiretty`                                                                                         |
-| 5   | per sicurezza i path usati da sudo devono essere ristretti a: `/usr/local/sbin` `/usr/local/bin` `/usr/sbin` `/usr/bin` `/sbin` `/bin` `/snap/bin`                                       | `Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`                                                                                 |
+| 4   | la modalità TTY deve essere abilitata per motivi di sicurezza                                                                                                                 | `Defaults requiretty`                                                                                                     |
+| 5   | per sicurezza i path usati da sudo devono essere ristretti a: `/usr/local/sbin` `/usr/local/bin` `/usr/sbin` `/usr/bin` `/sbin` `/bin` `/snap/bin`                            | `Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`                           |
 
 Spiegazione di cosa fanno i comandi:
 
@@ -471,18 +473,18 @@ Di seguito l’output mandato ogni 10min in broadcasting.
 
 Prima di chiudere l’argomento e passare avanti faccio un breve riassunto dei comandi di cron in maniera che si sappia come stoppare/disabilitare/riabilitare tale servizio. Questo sicuramente sarà utile in fase di discussione evitando di avere il messaggio che compare ripetutamente
 
-| Operazione                           | Comando                                 | Descrizione                                                          |
-| ------------------------------------ | --------------------------------------- | -------------------------------------------------------------------- |
-| Listare i cronjob dell'utente        | `crontab -l`                            | Mostra i cronjob attivi per  l'utente corrente.                      |
-| Modificare i cronjob                 | `crontab -e`                            | Apre l'editor predefinito  per modificare i cronjob dell'utente.     |
-| Aggiungere un cronjob                | `echo "*/10 * * * * /percorso/script"`  | Inserisce il cronjob puntato dal file indicato                       |
-| Rimuovere i cronjob                  | `crontab -r`                            | Cancella tutti i cronjob dell'utente corrente.                       |
-| Verificare lo stato del<br> servizio | `systemctl status crond`                | Mostra se il servizio cron è attivo o no.                            |
-| Avviare il servizio cron             | `systemctl start crond`                 | Avvia il servizio cron.                                              |
-| Fermare temporaneamente<br> cron     | `systemctl stop crond`                  | Ferma il servizio cron (i job non verranno eseguiti finché è fermo). |
-| Riavviare il servizio cron           | `systemctl restart crond`               | Riavvia cron (utile dopo modifiche importanti).                      |
-| Abilitare cron all’avvio             | `systemctl enable crond`                | Configura cron per partire automaticamente al boot del sistema.      |
-| Disabilitare cron all’avvio          | `systemctl disable crond`               | Impedisce a cron di partire automaticamente al boot.                 |
+| Operazione                           | Comando                                | Descrizione                                                          |
+| ------------------------------------ | -------------------------------------- | -------------------------------------------------------------------- |
+| Listare i cronjob dell'utente        | `crontab -l`                           | Mostra i cronjob attivi per  l'utente corrente.                      |
+| Modificare i cronjob                 | `crontab -e`                           | Apre l'editor predefinito  per modificare i cronjob dell'utente.     |
+| Aggiungere un cronjob                | `echo "*/10 * * * * /percorso/script"` | Inserisce il cronjob puntato dal file indicato                       |
+| Rimuovere i cronjob                  | `crontab -r`                           | Cancella tutti i cronjob dell'utente corrente.                       |
+| Verificare lo stato del<br> servizio | `systemctl status crond`               | Mostra se il servizio cron è attivo o no.                            |
+| Avviare il servizio cron             | `systemctl start crond`                | Avvia il servizio cron.                                              |
+| Fermare temporaneamente<br> cron     | `systemctl stop crond`                 | Ferma il servizio cron (i job non verranno eseguiti finché è fermo). |
+| Riavviare il servizio cron           | `systemctl restart crond`              | Riavvia cron (utile dopo modifiche importanti).                      |
+| Abilitare cron all’avvio             | `systemctl enable crond`               | Configura cron per partire automaticamente al boot del sistema.      |
+| Disabilitare cron all’avvio          | `systemctl disable crond`              | Impedisce a cron di partire automaticamente al boot.                 |
 
 ---
 
@@ -661,7 +663,7 @@ Adesso procediamo a stabilire la connessione al server lighttpd. Su Rocky (e in 
    Possiamo testare se il nostro file d configurazione è corretto andando ad eseguire: `sudo lighttpd -t -f /etc/lighttpd/lighttpd.conf`. Se tutto ok si otterrà un messaggio `Sintax OK`
 
 3. il file di configurazione del protocollo fastcgi che si trova in `/etc/lighttpd/conf.d/fastcgi.conf`. Prima di modificarlo però è necessario capire il modulo php-fpm su che porta sta ascoltando. Per fare questo lanciamo il comando `ss -lx | grep "php"`. Se otteniamo un output simile a questo allora stiamo comunicando sul socket Unix.![](asset_Born2BeRoot_RockyEdition/2025-01-16-14-58-51-image.png)
-
+   
    Detto questo quindi andiamo ad aggiungere le seguenti linee di codice al file `/etc/lighttpd/conf.d/fastcgi.conf`:
    
    ```ini
@@ -675,9 +677,9 @@ Adesso procediamo a stabilire la connessione al server lighttpd. Su Rocky (e in 
    )
    ```
 
-5. Apriamo il file *modules.conf* (`sudo vi /etc/lighttpd/modules.conf`) e decommentiamo la riga `include conf_dir + "/conf.d/fastcgi.conf"`
+4. Apriamo il file *modules.conf* (`sudo vi /etc/lighttpd/modules.conf`) e decommentiamo la riga `include conf_dir + "/conf.d/fastcgi.conf"`
 
-6. Apriamo il file *php.ini* (`sudo vi /etc/php.ini`) e decommentiamo la riga: `cgi.fix_pathinfo = 1`
+5. Apriamo il file *php.ini* (`sudo vi /etc/php.ini`) e decommentiamo la riga: `cgi.fix_pathinfo = 1`
 
 Bene adesso possiamo riavviare sia il server lighttpd che php-fpm con i comandi:
 
@@ -840,6 +842,7 @@ Salvato il file e riavviato il servizio lighttpd (`sudo systemctl restart lightt
 ![](asset_Born2BeRoot_RockyEdition/2025-01-16-18-53-44-image.png)
 
 ---
+
 # Ti è piaciuto il tutorial e ti è stato utile? :star2: : :broken_heart:
 
 # “Attenzione è entrato un disturbo, l’output è sospeso…”
