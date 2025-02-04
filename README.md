@@ -840,6 +840,7 @@ Salvato il file e riavviato il servizio lighttpd (`sudo systemctl restart lightt
 ![](asset_Born2BeRoot_RockyEdition/2025-01-16-18-53-44-image.png)
 
 ---
+# Ti è piaciuto il tutorial e ti è stato utile? :star2: : :broken_heart:
 
 # “Attenzione è entrato un disturbo, l’output è sospeso…”
 
@@ -850,5 +851,3 @@ Salvato il file e riavviato il servizio lighttpd (`sudo systemctl restart lightt
 # “STACCA STACCA, STACCA!!!!!”
 
 <img src="asset_Born2BeRoot_RockyEdition/2025-01-16-18-59-27-image.png" title="" alt="" data-align="center">
-
-# Ti è piaciuto il tutorial e ti è stato utile? :star2: : :broken_heart:
