@@ -742,9 +742,11 @@ Passiamo quindi al test di wordpress collegandoci direttamente col nostro browse
 
 ![_64.png](asset_Born2BeRoot_RockyEdition/0d6f641ba1aadb59dfbb12253ae51059af3ca0d6.png)
 
-Adesso dobbiamo connettere il db creato in precedenza e l’utenza a wordpress. Per farlo rinominiamo il file di configurazione `wp-config-sample.php` wordpress che si  trova in: `/var/www/lighttpd/wordpress/` andandolo a chiamare `wp-config.php`. Il comando sarà `sudo mv wp-config-sample.php wp-config.php` poi apriamo il file con VIM. Andiamo quindi a mettere nei campi evidenziati i valori che avevamo impostato per il nostro db mariaDB
+Adesso dobbiamo connettere il db creato in precedenza e l’utenza a wordpress. Per farlo apriamo il file di configurazione `wp-config-sample.php` wordpress che si  trova in: `/var/www/lighttpd/wordpress/` e mettiamo nei campi evidenziati i valori che avevamo impostato per il nostro db mariaDB come in figura sotto.
 
 ![_65.png](asset_Born2BeRoot_RockyEdition/dc15b80d407b831c0035f278cca0915b31f79ce5.png)
+
+Successivamente ricarichiamo la pagina del browser e poi rinominiamo il file `wp-config-sample.php` in `wp-config.php`. Il comando sarà `sudo mv wp-config-sample.php wp-config.php`.
 
 Apriamo una nuova scheda del browser ed andando all’indirizzo http://127.0.0.1:1234 dovremmo avere questa schermata
 
